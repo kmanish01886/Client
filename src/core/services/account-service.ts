@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import { single } from 'rxjs';
+import { single, tap } from 'rxjs';
 import { User } from '../../types/user';
 
 @Injectable({

@@ -9,17 +9,16 @@ import { AccountService } from '../../core/services/account-service';
   styleUrl: './nav.css'
 })
 export class Nav {
-  private accountservice=inject(AccountService)
+  protected accountService=inject(AccountService);
 protected creds:any={}
 protected loggedIn=signal(false)
 
 login(){
   debugger;
-  this.accountservice.login(this.creds).subscribe({
+  this.accountService.login(this.creds).subscribe({
     next:result=>
     {
       console.log(result),
-      this.loggedIn.set(true);
       this.creds={}
     },
     error:error=>alert(error.message)
@@ -28,7 +27,7 @@ login(){
 
 logout()
 {
-  this.loggedIn.set(false);
+  this.accountService.logout();
 }
 
 
