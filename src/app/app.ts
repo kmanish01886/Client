@@ -4,6 +4,7 @@ import { lastValueFrom } from 'rxjs';
 import { Nav } from "../layout/nav/nav";
 import { AccountService } from '../core/services/account-service';
 import { Home } from "../features/home/home";
+import { User } from '../types/user';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,7 @@ export class App implements OnInit {
   private accountservice=inject(AccountService);
   private http=inject(HttpClient);
   protected  title = 'client';
-  protected members=signal<any>([]);
+  protected members=signal<User[]>([]);
 
   // ngOnInit(): void {
   //  this.http.get('https://localhost:44324/api/Members/AllMembers').subscribe({
@@ -39,7 +40,7 @@ export class App implements OnInit {
   }
   async getMemebers(){
     try{
-        return lastValueFrom(this.http.get('https://localhost:44324/api/Members/AllMembers'));
+        return lastValueFrom(this.http.get<User[]>('https://localhost:44324/api/Members/AllMembers'));
     }
     catch(error)
     {
