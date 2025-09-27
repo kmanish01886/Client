@@ -5,16 +5,18 @@ import { Nav } from "../layout/nav/nav";
 import { AccountService } from '../core/services/account-service';
 import { Home } from "../features/home/home";
 import { User } from '../types/user';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrl: './app.css',
-  imports: [Nav, Home]
+  imports: [Nav, RouterOutlet]
 })
 export class App implements OnInit {
   private accountservice=inject(AccountService);
   private http=inject(HttpClient);
+  protected router=inject(Router);
   protected  title = 'client';
   protected members=signal<User[]>([]);
 
