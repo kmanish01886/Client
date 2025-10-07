@@ -10,6 +10,7 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
   return next(req).pipe(
     catchError(error=>{
       if(error){
+        debugger;
         switch(error.status)
         {
           case 400:
@@ -34,7 +35,7 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
             break;
           case 500:
             const navigationExtras:NavigationExtras={state:error.error}   
-            router.navigateByUrl('/server-error', navigationExtras)
+            router.navigateByUrl('/server-errror', navigationExtras)
             break;
           default:
             toast.error('Something went wrong');

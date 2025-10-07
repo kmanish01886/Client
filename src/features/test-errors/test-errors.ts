@@ -38,8 +38,7 @@ export class TestErrors {
     })
   }
   get400ValidationError(){
-    debugger;
-    this.http.post(this.baseUrl+'buggy/register',{}).subscribe({
+    this.http.post(this.baseUrl+'account/register',{}).subscribe({
       next:response=>console.log(response),
       error:error=>{
         console.log(error)
